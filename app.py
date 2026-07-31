@@ -146,16 +146,16 @@ if (user_input) and (leader_agent):
   # TAB 2 CODE
   with tab2:
     if st.button("Fetch News",key="Fetch-News"):
-      with st.spinner("Running Agent")
-      try:
-        prompt="Give multiple news in HTML card format for topic" + user_input
-        response = leader_agent.invoke({'messages':[{'role':'user',
+      with st.spinner("Running Agent"):
+        try:
+          prompt="Give multiple news in HTML card format for topic" + user_input
+          response = leader_agent.invoke({'messages':[{'role':'user',
                                                'content':prompt}]})
-        code = response['messages'][-1].content[-1]['text']
-        st.html(code, width="stretch",
+          code = response['messages'][-1].content[-1]['text']
+          st.html(code, width="stretch",
                 unsafe_allow_javascript=True)
-      except Exception as err:
-        st.error(err)
+        except Exception as err:
+          st.error(err)
   # TAB 3 CODE
   with tab3:
     if st.button("Generate PPT",key="Gen-PPT"):
