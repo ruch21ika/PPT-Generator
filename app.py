@@ -72,7 +72,7 @@ def generate_image(img_prompt,slide_no =1):
 
   from PIL import Image
   img= Image.open(f"ai_image_{slide_no}.jpeg")
-  return img
+  return url
 
 def agent_prompt(query):
     """This help to promptify the given user
@@ -130,20 +130,21 @@ tab1,tab2,tab3= st.tabs(["Generate Image",
                          "Fetch Latest News",
                          "Generate PPT"])
 
-if (user_input) and (agent):
+if (user_input) and (leader_agent):
   # TAB 1 CODE
   with tab1:
-    if st.button("Generate Image",keys="Gen-Image"):
+    if st.button("Generate Image",key="Gen-Image"):
       with st.spinner("Running Agent"):
         try:
-          generate_image(user_input)
+          img=generate_image(user_input)
+          st.image(img)
         except:
            url= f"https://image.pollinations.ai/{user_input}"
            time.sleep(4)
            st.image(url)
   # TAB 2 CODE
   with tab2:
-    if st.button("Fetch News",keys="Fetch-News"):
+    if st.button("Fetch News",key="Fetch-News"):
       with st.spinner("Running Agent")
       try:
         prompt="Give multiple news in HTML card format for topic" + user_input
@@ -156,7 +157,7 @@ if (user_input) and (agent):
         st.error(err)
   # TAB 3 CODE
   with tab3:
-    if st.button("Generate PPT",keys="Gen-PPT"):
+    if st.button("Generate PPT",key="Gen-PPT"):
       with st.spinner("Running Agent"):
         try:
           code=run_agent(leader_agent,user_input)
