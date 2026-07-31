@@ -27,8 +27,7 @@ ALL_API=[GOOGLE_API_KEY,TAVILY_API_KEY]
 if not all(ALL_API):
   st.sidebar.error("MUST PASS ALL THE API's KEYS")
 elif all(ALL_API):
-  s
-  t.sidebar.success("API-KEYS LOADED SUCCESSFULLY")
+  st.sidebar.success("API-KEYS LOADED SUCCESSFULLY")
   # MODEL LOAD
   model= ChatGoogleGenerativeAI(
     google_api_key=GOOGLE_API_KEY,
