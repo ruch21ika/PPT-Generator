@@ -10,7 +10,6 @@ from tavily import TavilyClient
 from langchain.messages import SystemMessage,HumanMessage
 import numpy as np
 import streamlit as st
-from langchain_community.document_loaders import PyMuPDFLoader
 
 # STEP 2: Streamlit Front end
 # To show web-app: complete page layout
